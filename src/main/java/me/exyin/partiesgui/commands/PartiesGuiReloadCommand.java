@@ -11,6 +11,7 @@ public record PartiesGuiReloadCommand(PartiesGui plugin) {
   public int run(final CommandContext<CommandSourceStack> ctx) {
     plugin.getConfigUtil().setupConfigFile();
     plugin.getMessageConfigUtil().setupConfigFile();
+    plugin.getGuiUtil().setupConfigFile();
     plugin.getMessageUtil().sendMessage(Objects.requireNonNull(ctx.getSource().getExecutor()), "reload");
     return Command.SINGLE_SUCCESS;
   }

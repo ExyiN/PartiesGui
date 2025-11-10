@@ -5,9 +5,7 @@ import com.alessiodp.parties.api.interfaces.PartiesAPI;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.exyin.partiesgui.commands.PartiesGuiAdminCommands;
 import me.exyin.partiesgui.commands.PartiesGuiCommands;
-import me.exyin.partiesgui.utils.ConfigUtil;
-import me.exyin.partiesgui.utils.MessageConfigUtil;
-import me.exyin.partiesgui.utils.MessageUtil;
+import me.exyin.partiesgui.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PartiesGui extends JavaPlugin {
@@ -15,6 +13,8 @@ public final class PartiesGui extends JavaPlugin {
   private ConfigUtil configUtil;
   private MessageConfigUtil messageConfigUtil;
   private MessageUtil messageUtil;
+  private GuiUtil guiUtil;
+  private PlaceholderUtil placeholderUtil;
 
   @Override
   public void onEnable() {
@@ -25,7 +25,24 @@ public final class PartiesGui extends JavaPlugin {
     configUtil = new ConfigUtil(this);
     messageConfigUtil = new MessageConfigUtil(this);
     messageUtil = new MessageUtil(this);
+    guiUtil = new GuiUtil(this);
+    placeholderUtil = new PlaceholderUtil(this);
     registerCommands();
+  }
+
+  private void registerCommands() {
+    final PartiesGuiCommands partiesGuiCommands = new PartiesGuiCommands(this);
+    final PartiesGuiAdminCommands partiesGuiAdminCommands = new PartiesGuiAdminCommands(this);
+    getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
+      commands.registrar()
+              .register(partiesGuiCommands.constructPartiesGuiCommand(configUtil.getString("command.partygui.command")));
+      configUtil.getStringList("command.partygui.aliases").forEach(alias -> commands.registrar()
+              .register(partiesGuiCommands.constructPartiesGuiCommand(alias)));
+      commands.registrar()
+              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(configUtil.getString("command.partyguia.command")));
+      configUtil.getStringList("command.partyguia.aliases").forEach(alias -> commands.registrar()
+              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(alias)));
+    });
   }
 
   public PartiesAPI getPartiesAPI() {
@@ -44,18 +61,12 @@ public final class PartiesGui extends JavaPlugin {
     return messageUtil;
   }
 
-  private void registerCommands() {
-    final PartiesGuiCommands partiesGuiCommands = new PartiesGuiCommands(this);
-    final PartiesGuiAdminCommands partiesGuiAdminCommands = new PartiesGuiAdminCommands(this);
-    getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
-      commands.registrar()
-              .register(partiesGuiCommands.constructPartiesGuiCommand(configUtil.getString("command.partygui.command")));
-      configUtil.getStringList("command.partygui.aliases").forEach(alias -> commands.registrar()
-              .register(partiesGuiCommands.constructPartiesGuiCommand(alias)));
-      commands.registrar()
-              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(configUtil.getString("command.partyguia.command")));
-      configUtil.getStringList("command.partyguia.aliases").forEach(alias -> commands.registrar()
-              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(alias)));
-    });
+  public GuiUtil getGuiUtil() {
+    return guiUtil;
   }
+
+  public PlaceholderUtil getPlaceholderUtil() {
+    return placeholderUtil;
+  }
+
 }

@@ -2,6 +2,7 @@ package me.exyin.partiesgui.utils;
 
 import me.exyin.partiesgui.PartiesGui;
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
 public class MessageUtil {
@@ -18,4 +19,7 @@ public class MessageUtil {
     audience.sendMessage(miniMessage.deserialize(plugin.getMessageConfigUtil().getString("prefix") + message));
   }
 
+  public Component toMiniMessageComponent(final String text) {
+    return miniMessage.deserialize(text);
+  }
 }

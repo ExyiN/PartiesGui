@@ -15,7 +15,7 @@ public record PartiesGuiOpenCommand(PartiesGui plugin) {
     if (partyPlayer == null || !partyPlayer.isInParty()) {
       plugin.getMessageUtil().sendMessage(player, "error.not-in-party");
     } else {
-      final MainGui mainGui = new MainGui(plugin);
+      final MainGui mainGui = new MainGui(plugin, partyPlayer);
       player.openInventory(mainGui.getInventory());
     }
     return Command.SINGLE_SUCCESS;
