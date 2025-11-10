@@ -1,17 +1,21 @@
 package me.exyin.partiesgui;
 
+import com.alessiodp.parties.api.Parties;
+import com.alessiodp.parties.api.interfaces.PartiesAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PartiesGui extends JavaPlugin {
+  private PartiesAPI partiesAPI;
 
   @Override
   public void onEnable() {
-    // Plugin startup logic
-
+    if(getServer().getPluginManager().getPlugin("Parties") != null && getServer().getPluginManager().isPluginEnabled("Parties")) {
+      partiesAPI = Parties.getApi();
+      getLogger().info("Hooked into Parties plugin.");
+    }
   }
 
-  @Override
-  public void onDisable() {
-    // Plugin shutdown logic
+  public PartiesAPI getPartiesAPI() {
+    return partiesAPI;
   }
 }

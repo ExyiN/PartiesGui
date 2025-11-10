@@ -3,3 +3,5 @@ version: '1.0-SNAPSHOT'
 main: me.exyin.partiesgui.PartiesGui
 api-version: '1.21'
 authors: [ ExyiN ]
+depend:
+  - Parties
