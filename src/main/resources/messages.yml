@@ -1,0 +1,4 @@
+prefix: "<gradient:#8107e9:#DE125C>PartiesGUI</gradient> <dark_gray>»</dark_gray> "
+error:
+  not-in-party: "<red>You are not in a party.</red>"
+reload: "<green>Plugin reloaded.</green>"

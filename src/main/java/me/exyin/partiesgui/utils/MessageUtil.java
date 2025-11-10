@@ -1,0 +1,21 @@
+package me.exyin.partiesgui.utils;
+
+import me.exyin.partiesgui.PartiesGui;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+
+public class MessageUtil {
+  private final PartiesGui plugin;
+  private final MiniMessage miniMessage;
+
+  public MessageUtil(final PartiesGui plugin) {
+    this.plugin = plugin;
+    miniMessage = MiniMessage.miniMessage();
+  }
+
+  public void sendMessage(final Audience audience, final String key) {
+    final String message = plugin.getMessageConfigUtil().getString(key);
+    audience.sendMessage(miniMessage.deserialize(plugin.getMessageConfigUtil().getString("prefix") + message));
+  }
+
+}

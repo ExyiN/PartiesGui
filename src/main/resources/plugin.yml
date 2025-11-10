@@ -5,3 +5,10 @@ api-version: '1.21'
 authors: [ ExyiN ]
 depend:
   - Parties
+permissions:
+  partiesgui.user.gui:
+    default: op
+    description: Allow the usage of the GUI for Parties
+  partiesgui.admin:
+    default: op
+    description: Admin commands

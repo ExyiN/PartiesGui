@@ -1,0 +1,9 @@
+command:
+  partygui:
+    command: "partygui"
+    description: "Open the party GUI"
+    aliases: []
+  partyguia:
+    command: "partyguia"
+    description: "Admin command"
+    aliases: []
