@@ -8,7 +8,13 @@ import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.gui.MainGui;
 import org.bukkit.entity.Player;
 
-public record PartiesGuiOpenCommand(PartiesGui plugin) {
+public class PartiesGuiOpenCommand {
+  private final PartiesGui plugin;
+
+  public PartiesGuiOpenCommand(final PartiesGui plugin) {
+    this.plugin = plugin;
+  }
+
   public int run(final CommandContext<CommandSourceStack> ctx) {
     final Player player = (Player) ctx.getSource().getExecutor();
     final PartyPlayer partyPlayer = plugin.getPartiesAPI().getPartyPlayer(player.getUniqueId());

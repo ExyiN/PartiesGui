@@ -6,8 +6,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class MainGui implements InventoryHolder {
   private final String id = "main-gui";
   private final Inventory inventory;

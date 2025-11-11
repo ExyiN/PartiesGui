@@ -5,7 +5,13 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import me.exyin.partiesgui.PartiesGui;
 
-public record PartiesGuiCommands(PartiesGui plugin) {
+public class PartiesGuiCommands {
+  private final PartiesGui plugin;
+
+  public PartiesGuiCommands(final PartiesGui plugin) {
+    this.plugin = plugin;
+  }
+
   public LiteralCommandNode<CommandSourceStack> constructPartiesGuiCommand(final String commandName) {
     final PartiesGuiOpenCommand partiesGuiOpenCommand = new PartiesGuiOpenCommand(plugin);
     return Commands.literal(commandName)
