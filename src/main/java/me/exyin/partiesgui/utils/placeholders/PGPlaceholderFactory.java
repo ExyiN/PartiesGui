@@ -11,13 +11,15 @@ import java.util.Map;
 
 public class PGPlaceholderFactory {
   private final Map<String, PGPlaceholder> map;
-  private final List<String> placeholders = List.of("{party-name}", "{party-desc}", "{party-leader}", "{player-name}", "{player-rank}");
+  private final List<String> placeholders = List.of("{party-name}", "{party-desc}", "{party-leader}", "{party-total-members}", "{party-online-members}", "{player-name}", "{player-rank}");
 
   public PGPlaceholderFactory(final PartiesGui plugin, final PartyPlayer partyPlayer) {
     map = new HashMap<>();
     map.put("{party-name}", new PGPlaceholderPartyName(partyPlayer));
     map.put("{party-desc}", new PGPlaceholderPartyDesc(plugin, partyPlayer));
     map.put("{party-leader}", new PGPlaceholderPartyLeader(plugin, partyPlayer));
+    map.put("{party-total-members}", new PGPlaceholderPartyTotalMembers(plugin, partyPlayer));
+    map.put("{party-online-members}", new PGPlaceholderPartyOnlineMembers(plugin, partyPlayer));
     map.put("{player-name}", new PGPlaceholderPlayerName(partyPlayer));
     map.put("{player-rank}", new PGPlaceholderPlayerRank(plugin, partyPlayer));
     map.put("default", new PGPlaceholderDefault());

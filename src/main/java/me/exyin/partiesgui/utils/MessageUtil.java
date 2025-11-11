@@ -5,6 +5,8 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
+import java.util.Objects;
+
 public class MessageUtil {
   private final PartiesGui plugin;
   private final MiniMessage miniMessage;
@@ -20,6 +22,6 @@ public class MessageUtil {
   }
 
   public Component toMiniMessageComponent(final String text) {
-    return miniMessage.deserialize(text);
+    return miniMessage.deserialize(Objects.requireNonNullElse(text, ""));
   }
 }

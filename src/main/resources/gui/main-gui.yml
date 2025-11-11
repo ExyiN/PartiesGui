@@ -1,2 +1,46 @@
-title: "Party {party-name}"
+title: "Party GUI"
 rows: 3
+empty: BLACK_STAINED_GLASS_PANE
+items:
+  10:
+    id: "party-infos"
+    material: PAPER
+    name: "{party-name}"
+    lore:
+      - "Leader: {party-leader}"
+      - "Members: {party-total-members}"
+      - "Online: {party-online-members}"
+  11:
+    id: "player-infos"
+    material: PLAYER_HEAD
+    skullOwner: "self"
+    name: "{player-name}"
+    lore:
+      - "Rank: {player-rank}"
+  12:
+    material: AIR
+  13:
+    material: AIR
+  14:
+    id: "party-settings"
+    required-rank-level: 10
+    material: COMMAND_BLOCK
+    name: "Party settings"
+    lore:
+      - "Modify party settings"
+  15:
+    id: "party-members"
+    material: PLAYER_HEAD
+    name: "Members"
+    lore:
+      - "Click to see the party members"
+  16:
+    id: "party-home"
+    material: ENDER_PEARL
+    name: "Party home"
+    lore:
+      - "Teleport to party home"
+  22:
+    id: "close"
+    material: BARRIER
+    name: "Close"

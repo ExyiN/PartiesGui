@@ -3,11 +3,14 @@ package me.exyin.partiesgui;
 import com.alessiodp.parties.api.Parties;
 import com.alessiodp.parties.api.interfaces.PartiesAPI;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import lombok.Getter;
 import me.exyin.partiesgui.commands.PartiesGuiAdminCommands;
 import me.exyin.partiesgui.commands.PartiesGuiCommands;
+import me.exyin.partiesgui.listeners.InventoryListener;
 import me.exyin.partiesgui.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@Getter
 public final class PartiesGui extends JavaPlugin {
   private PartiesAPI partiesAPI;
   private ConfigUtil configUtil;
@@ -15,6 +18,7 @@ public final class PartiesGui extends JavaPlugin {
   private MessageUtil messageUtil;
   private GuiUtil guiUtil;
   private PlaceholderUtil placeholderUtil;
+  private ItemUtil itemUtil;
 
   @Override
   public void onEnable() {
@@ -27,7 +31,9 @@ public final class PartiesGui extends JavaPlugin {
     messageUtil = new MessageUtil(this);
     guiUtil = new GuiUtil(this);
     placeholderUtil = new PlaceholderUtil(this);
+    itemUtil = new ItemUtil(this);
     registerCommands();
+    registerListeners();
   }
 
   private void registerCommands() {
@@ -45,28 +51,7 @@ public final class PartiesGui extends JavaPlugin {
     });
   }
 
-  public PartiesAPI getPartiesAPI() {
-    return partiesAPI;
+  private void registerListeners() {
+    getServer().getPluginManager().registerEvents(new InventoryListener(), this);
   }
-
-  public ConfigUtil getConfigUtil() {
-    return configUtil;
-  }
-
-  public MessageConfigUtil getMessageConfigUtil() {
-    return messageConfigUtil;
-  }
-
-  public MessageUtil getMessageUtil() {
-    return messageUtil;
-  }
-
-  public GuiUtil getGuiUtil() {
-    return guiUtil;
-  }
-
-  public PlaceholderUtil getPlaceholderUtil() {
-    return placeholderUtil;
-  }
-
 }

@@ -34,6 +34,10 @@ public class GuiUtil {
     }
   }
 
+  public boolean existsSection(final String gui, final String key) {
+    return configMap.get(gui).getConfigurationSection(key) != null;
+  }
+
   public String getString(final String gui, final String key) {
     return configMap.get(gui).getString(key);
   }
@@ -44,5 +48,9 @@ public class GuiUtil {
 
   public int getInt(final String gui, final String key) {
     return configMap.get(gui).getInt(key);
+  }
+
+  public boolean getBoolean(final String gui, final String key) {
+    return configMap.get(gui).getBoolean(key);
   }
 }
