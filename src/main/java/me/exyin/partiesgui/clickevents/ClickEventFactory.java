@@ -17,6 +17,9 @@ public class ClickEventFactory {
     map.put(ClickEventEnum.PARTY_HOME, new ClickEventPartyHome(plugin));
     map.put(ClickEventEnum.PARTY_MEMBERS, new ClickEventPartyMembers(plugin));
     map.put(ClickEventEnum.PARTY_SETTINGS, new ClickEventPartySettings(plugin));
+    map.put(ClickEventEnum.GUI_PREVIOUS_PAGE, new ClickEventGuiPreviousPage(plugin));
+    map.put(ClickEventEnum.GUI_NEXT_PAGE, new ClickEventGuiNextPage(plugin));
+    map.put(ClickEventEnum.GUI_BACK, new ClickEventGuiBack(plugin));
     map.put(ClickEventEnum.GUI_CLOSE, new ClickEventGuiClose(plugin));
   }
 

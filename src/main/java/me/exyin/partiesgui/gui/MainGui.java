@@ -18,10 +18,9 @@ public class MainGui implements InventoryHolder, PGGui {
   private final PartiesGui plugin;
   private final PartyPlayer partyPlayer;
   private final Inventory inventory;
-  private final int slots;
 
   public MainGui(final PartiesGui plugin, final PartyPlayer partyPlayer) {
-    slots = 9 * plugin.getGuiUtil().getInt(id, "rows");
+    final int slots = 9 * plugin.getGuiUtil().getInt(id, "rows");
     this.plugin = plugin;
     this.partyPlayer = partyPlayer;
     this.inventory = plugin.getServer().createInventory(this,
@@ -42,7 +41,7 @@ public class MainGui implements InventoryHolder, PGGui {
             partyPlayer
 
     );
-    for (int i = 0; i < slots; i++) {
+    for (int i = 0; i < inventory.getSize(); i++) {
       final String sectionKey = "items." + i;
       if (!plugin.getGuiUtil().existsSection(id, sectionKey)
               || plugin.getGuiUtil().getInt(id, sectionKey + ".required-rank-level") > partyPlayer.getRank()) {
@@ -54,7 +53,7 @@ public class MainGui implements InventoryHolder, PGGui {
                 plugin.getGuiUtil().getStringList(id, sectionKey + ".lore"),
                 plugin.getGuiUtil().getBoolean(id, sectionKey + ".enchanted"),
                 plugin.getGuiUtil().getString(id, sectionKey + ".custom-model-data"),
-                plugin.getGuiUtil().getString(id, sectionKey + ".skullOwner"),
+                plugin.getGuiUtil().getString(id, sectionKey + ".skull-owner"),
                 partyPlayer
         );
         inventory.setItem(i, item);
@@ -76,8 +75,8 @@ public class MainGui implements InventoryHolder, PGGui {
     }
     final ClickEventFactory clickEventFactory = new ClickEventFactory(plugin);
     final ClickEvent clickEvent = clickEventFactory.of(clickEventName);
-    if (clickEvent.canExecute(whoClicked, partyPlayer, slot)) {
-      clickEvent.execute(whoClicked, partyPlayer, slot);
+    if (clickEvent.canExecute(this, whoClicked, partyPlayer, slot)) {
+      clickEvent.execute(this, whoClicked, partyPlayer, slot);
     }
   }
 }

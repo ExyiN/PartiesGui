@@ -3,6 +3,7 @@ package me.exyin.partiesgui.clickevents.impl;
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
 import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
+import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
 public class ClickEventPartySettings implements ClickEvent {
@@ -13,12 +14,12 @@ public class ClickEventPartySettings implements ClickEvent {
   }
 
   @Override
-  public boolean canExecute(final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
+  public boolean canExecute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     return plugin.getGuiUtil().getInt("main-gui", "items." + slot + ".required-rank-level") <= partyPlayer.getRank();
   }
 
   @Override
-  public void execute(final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
+  public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     plugin.getSoundUtil().playClickSound(whoClicked);
     whoClicked.sendRichMessage("Settings");
   }

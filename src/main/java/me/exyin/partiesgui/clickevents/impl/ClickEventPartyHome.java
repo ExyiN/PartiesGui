@@ -3,6 +3,7 @@ package me.exyin.partiesgui.clickevents.impl;
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
 import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
+import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
 import java.text.MessageFormat;
@@ -15,12 +16,12 @@ public class ClickEventPartyHome implements ClickEvent {
   }
 
   @Override
-  public boolean canExecute(final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
+  public boolean canExecute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     return true;
   }
 
   @Override
-  public void execute(final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
+  public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     final String partyCommand = plugin.getConfigUtil().getString("parties-commands.party", "party");
     final String homeSubCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.home", "home");
     plugin.getSoundUtil().playClickSound(whoClicked);

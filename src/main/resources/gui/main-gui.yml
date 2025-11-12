@@ -11,7 +11,7 @@ items:
       - "Online: {party-online-members}"
   11:
     material: PLAYER_HEAD
-    skullOwner: "self"
+    skull-owner: "self"
     name: "{player-name}"
     lore:
       - "Rank: {player-rank}"

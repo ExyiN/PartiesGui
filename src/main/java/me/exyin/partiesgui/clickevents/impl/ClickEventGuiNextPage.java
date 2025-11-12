@@ -7,22 +7,25 @@ import me.exyin.partiesgui.gui.MembersGui;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
-public class ClickEventPartyMembers implements ClickEvent {
+public class ClickEventGuiNextPage implements ClickEvent {
   private final PartiesGui plugin;
 
-  public ClickEventPartyMembers(final PartiesGui plugin) {
+  public ClickEventGuiNextPage(final PartiesGui plugin) {
     this.plugin = plugin;
   }
 
   @Override
   public boolean canExecute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
-    return true;
+    return gui instanceof final MembersGui membersGui && membersGui.getPIndex() < (membersGui.getPages().size() - 1);
   }
 
   @Override
   public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
+    if (!(gui instanceof final MembersGui membersGui)) {
+      return;
+    }
     plugin.getSoundUtil().playClickSound(whoClicked);
-    final MembersGui membersGui = new MembersGui(plugin, partyPlayer);
-    whoClicked.openInventory(membersGui.getInventory());
+    membersGui.setPIndex(membersGui.getPIndex() + 1);
+    membersGui.setup();
   }
 }

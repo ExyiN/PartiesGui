@@ -23,6 +23,7 @@ public class GuiUtil {
     File[] configFiles = guiDir.listFiles();
     if (!guiDir.exists() || configFiles == null || configFiles.length == 0) {
       plugin.saveResource("gui" + File.separator + "main-gui.yml", false);
+      plugin.saveResource("gui" + File.separator + "members-gui.yml", false);
       configFiles = guiDir.listFiles();
       if (configFiles == null || configFiles.length == 0) {
         return;
