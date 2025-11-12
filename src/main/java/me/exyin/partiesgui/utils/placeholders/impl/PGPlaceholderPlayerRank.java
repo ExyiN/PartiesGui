@@ -20,6 +20,6 @@ public class PGPlaceholderPlayerRank implements PGPlaceholder {
   public String getReplacement() {
     final Set<PartyRank> partyRanks = plugin.getPartiesAPI().getRanks();
     final PartyRank rank = partyRanks.stream().filter(partyRank -> partyRank.getLevel() == partyPlayer.getRank()).toList().getFirst();
-    return rank.getName();
+    return plugin.getConfigUtil().getString("colors.ranks." + rank.getLevel(), "") + rank.getName();
   }
 }
