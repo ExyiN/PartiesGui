@@ -15,4 +15,4 @@ click-sound:
   sound: block.lever.click
   volume: 1.0
   pitch: 1.0
-  category: PLAYERS
+  category: PLAYER

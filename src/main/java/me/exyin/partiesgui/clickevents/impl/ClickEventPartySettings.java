@@ -14,7 +14,7 @@ public class ClickEventPartySettings implements ClickEvent {
 
   @Override
   public boolean canExecute(final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
-    return plugin.getGuiUtil().getInt("main-gui", "items." + slot + ".required-rank-level") < partyPlayer.getRank();
+    return plugin.getGuiUtil().getInt("main-gui", "items." + slot + ".required-rank-level") <= partyPlayer.getRank();
   }
 
   @Override
