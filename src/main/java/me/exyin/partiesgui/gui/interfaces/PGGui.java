@@ -1,5 +1,7 @@
 package me.exyin.partiesgui.gui.interfaces;
 
-public interface PGGui {
+import org.bukkit.entity.Player;
 
+public interface PGGui {
+  void handleClickEvent(int slot, Player whoClicked);
 }

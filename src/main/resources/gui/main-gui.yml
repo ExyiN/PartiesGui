@@ -3,7 +3,6 @@ rows: 3
 empty: BLACK_STAINED_GLASS_PANE
 items:
   10:
-    id: "party-infos"
     material: PAPER
     name: "{party-name}"
     lore:
@@ -11,7 +10,6 @@ items:
       - "Members: {party-total-members}"
       - "Online: {party-online-members}"
   11:
-    id: "player-infos"
     material: PLAYER_HEAD
     skullOwner: "self"
     name: "{player-name}"
@@ -22,25 +20,25 @@ items:
   13:
     material: AIR
   14:
-    id: "party-settings"
+    click-event: "party_settings"
     required-rank-level: 10
     material: COMMAND_BLOCK
     name: "Party settings"
     lore:
       - "Modify party settings"
   15:
-    id: "party-members"
+    click-event: "party_members"
     material: PLAYER_HEAD
     name: "Members"
     lore:
       - "Click to see the party members"
   16:
-    id: "party-home"
+    click-event: "party_home"
     material: ENDER_PEARL
     name: "Party home"
     lore:
       - "Teleport to party home"
   22:
-    id: "close"
+    click-event: "gui_close"
     material: BARRIER
     name: "Close"

@@ -2,7 +2,10 @@ package me.exyin.partiesgui.gui;
 
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
 import me.exyin.partiesgui.PartiesGui;
+import me.exyin.partiesgui.clickevents.ClickEventFactory;
+import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -42,7 +45,7 @@ public class MainGui implements InventoryHolder, PGGui {
     for (int i = 0; i < slots; i++) {
       final String sectionKey = "items." + i;
       if (!plugin.getGuiUtil().existsSection(id, sectionKey)
-              || plugin.getGuiUtil().getInt(id, "required-rank-level") > partyPlayer.getRank()) {
+              || plugin.getGuiUtil().getInt(id, sectionKey + ".required-rank-level") > partyPlayer.getRank()) {
         inventory.setItem(i, emptySlot);
       } else {
         final ItemStack item = plugin.getItemUtil().createItemStack(
@@ -62,5 +65,19 @@ public class MainGui implements InventoryHolder, PGGui {
   @Override
   public @NotNull Inventory getInventory() {
     return inventory;
+  }
+
+  @Override
+  public void handleClickEvent(final int slot, final Player whoClicked) {
+    final String key = "items." + slot + ".click-event";
+    final String clickEventName = plugin.getGuiUtil().getString(id, key);
+    if (clickEventName == null) {
+      return;
+    }
+    final ClickEventFactory clickEventFactory = new ClickEventFactory(plugin);
+    final ClickEvent clickEvent = clickEventFactory.of(clickEventName);
+    if (clickEvent.canExecute(whoClicked, partyPlayer, slot)) {
+      clickEvent.execute(whoClicked, partyPlayer, slot);
+    }
   }
 }

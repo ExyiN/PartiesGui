@@ -1,0 +1,32 @@
+package me.exyin.partiesgui.clickevents;
+
+import me.exyin.partiesgui.PartiesGui;
+import me.exyin.partiesgui.clickevents.enums.ClickEventEnum;
+import me.exyin.partiesgui.clickevents.impl.*;
+import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ClickEventFactory {
+  private final Map<ClickEventEnum, ClickEvent> map;
+
+  public ClickEventFactory(final PartiesGui plugin) {
+    map = new HashMap<>();
+    map.put(ClickEventEnum.NOTHING, new ClickEventNothing());
+    map.put(ClickEventEnum.PARTY_HOME, new ClickEventPartyHome(plugin));
+    map.put(ClickEventEnum.PARTY_MEMBERS, new ClickEventPartyMembers(plugin));
+    map.put(ClickEventEnum.PARTY_SETTINGS, new ClickEventPartySettings(plugin));
+    map.put(ClickEventEnum.GUI_CLOSE, new ClickEventGuiClose(plugin));
+  }
+
+  public ClickEvent of(final String event) {
+    ClickEventEnum clickEvent;
+    try {
+      clickEvent = ClickEventEnum.valueOf(event.toUpperCase());
+    } catch (final IllegalArgumentException e) {
+      clickEvent = ClickEventEnum.NOTHING;
+    }
+    return map.get(clickEvent);
+  }
+}

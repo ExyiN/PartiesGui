@@ -19,6 +19,7 @@ public final class PartiesGui extends JavaPlugin {
   private GuiUtil guiUtil;
   private PlaceholderUtil placeholderUtil;
   private ItemUtil itemUtil;
+  private SoundUtil soundUtil;
 
   @Override
   public void onEnable() {
@@ -32,6 +33,7 @@ public final class PartiesGui extends JavaPlugin {
     guiUtil = new GuiUtil(this);
     placeholderUtil = new PlaceholderUtil(this);
     itemUtil = new ItemUtil(this);
+    soundUtil = new SoundUtil(this);
     registerCommands();
     registerListeners();
   }
@@ -41,12 +43,12 @@ public final class PartiesGui extends JavaPlugin {
     final PartiesGuiAdminCommands partiesGuiAdminCommands = new PartiesGuiAdminCommands(this);
     getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
       commands.registrar()
-              .register(partiesGuiCommands.constructPartiesGuiCommand(configUtil.getString("command.partygui.command")));
-      configUtil.getStringList("command.partygui.aliases").forEach(alias -> commands.registrar()
+              .register(partiesGuiCommands.constructPartiesGuiCommand(configUtil.getString("commands.partygui.command")));
+      configUtil.getStringList("commands.partygui.aliases").forEach(alias -> commands.registrar()
               .register(partiesGuiCommands.constructPartiesGuiCommand(alias)));
       commands.registrar()
-              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(configUtil.getString("command.partyguia.command")));
-      configUtil.getStringList("command.partyguia.aliases").forEach(alias -> commands.registrar()
+              .register(partiesGuiAdminCommands.constructPartiesGuiCommand(configUtil.getString("commands.partyguia.command")));
+      configUtil.getStringList("commands.partyguia.aliases").forEach(alias -> commands.registrar()
               .register(partiesGuiAdminCommands.constructPartiesGuiCommand(alias)));
     });
   }

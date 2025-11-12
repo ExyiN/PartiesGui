@@ -27,7 +27,15 @@ public class ConfigUtil {
     return config.getString(key);
   }
 
+  public String getString(final String key, final String defaultValue) {
+    return config.getString(key, defaultValue);
+  }
+
   public List<String> getStringList(final String key) {
     return config.getStringList(key);
+  }
+
+  public double getDouble(final String key) {
+    return config.getDouble(key);
   }
 }
