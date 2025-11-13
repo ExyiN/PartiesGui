@@ -1,8 +1,10 @@
 package me.exyin.partiesgui.utils;
 
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.utils.placeholders.PGPlaceholderFactory;
+import org.bukkit.OfflinePlayer;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +29,11 @@ public class PlaceholderUtil {
       if (!replacement.isBlank()) {
         replacedText = replacedText.replace(placeholder, replacement);
       }
+    }
+
+    if (plugin.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+      final OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(partyPlayer.getPlayerUUID());
+      replacedText = PlaceholderAPI.setPlaceholders(offlinePlayer, replacedText);
     }
     return replacedText;
   }

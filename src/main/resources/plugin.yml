@@ -5,6 +5,8 @@ api-version: '1.21'
 authors: [ ExyiN ]
 depend:
   - Parties
+softdepend:
+  - PlaceholderAPI
 permissions:
   partiesgui.user.gui:
     default: op
