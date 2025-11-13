@@ -1,24 +1,25 @@
 package me.exyin.partiesgui.utils.placeholders.impl;
 
 import com.alessiodp.parties.api.interfaces.Party;
+import com.alessiodp.parties.api.interfaces.PartyColor;
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
 import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.utils.placeholders.interfaces.PGPlaceholder;
 
 import java.util.UUID;
 
-public class PGPlaceholderPartyTotalMembers implements PGPlaceholder {
+public class PGPlaceholderPartyNameColored implements PGPlaceholder {
   private final PartiesGui plugin;
   private final PartyPlayer partyPlayer;
 
-  public PGPlaceholderPartyTotalMembers(final PartiesGui plugin, final PartyPlayer partyPlayer) {
+  public PGPlaceholderPartyNameColored(final PartiesGui plugin, final PartyPlayer partyPlayer) {
     this.plugin = plugin;
     this.partyPlayer = partyPlayer;
   }
 
   @Override
   public String getPlaceholderName() {
-    return "{party-total-members}";
+    return "{party-name-colored}";
   }
 
   @Override
@@ -27,6 +28,8 @@ public class PGPlaceholderPartyTotalMembers implements PGPlaceholder {
     assert partyUuid != null;
     final Party party = plugin.getPartiesAPI().getParty(partyUuid);
     assert party != null;
-    return String.valueOf(party.getMembers().size());
+    final PartyColor partyColor = party.getColor();
+    assert partyColor != null;
+    return partyColor.getCode() + partyPlayer.getPartyName();
   }
 }

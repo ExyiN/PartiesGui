@@ -7,18 +7,18 @@ import me.exyin.partiesgui.utils.placeholders.interfaces.PGPlaceholder;
 
 import java.util.UUID;
 
-public class PGPlaceholderPartyTotalMembers implements PGPlaceholder {
+public class PGPlaceholderPartyLevelUpNecessary implements PGPlaceholder {
   private final PartiesGui plugin;
   private final PartyPlayer partyPlayer;
 
-  public PGPlaceholderPartyTotalMembers(final PartiesGui plugin, final PartyPlayer partyPlayer) {
+  public PGPlaceholderPartyLevelUpNecessary(final PartiesGui plugin, final PartyPlayer partyPlayer) {
     this.plugin = plugin;
     this.partyPlayer = partyPlayer;
   }
 
   @Override
   public String getPlaceholderName() {
-    return "{party-total-members}";
+    return "{party-level-up-necessary}";
   }
 
   @Override
@@ -27,6 +27,6 @@ public class PGPlaceholderPartyTotalMembers implements PGPlaceholder {
     assert partyUuid != null;
     final Party party = plugin.getPartiesAPI().getParty(partyUuid);
     assert party != null;
-    return String.valueOf(party.getMembers().size());
+    return String.valueOf(party.getLevelUpNecessary());
   }
 }

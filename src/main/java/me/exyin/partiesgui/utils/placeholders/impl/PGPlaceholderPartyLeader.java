@@ -17,6 +17,11 @@ public class PGPlaceholderPartyLeader implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{party-leader}";
+  }
+
+  @Override
   public String getReplacement() {
     final UUID partyUuid = partyPlayer.getPartyId();
     assert partyUuid != null;

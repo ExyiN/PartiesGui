@@ -4,8 +4,9 @@ empty: BLACK_STAINED_GLASS_PANE
 items:
   10:
     material: PAPER
-    name: "{party-name}"
+    name: "{party-name-colored}<reset> <dark_gray>•</dark_gray> ʟᴠʟ <green>{party-level}</green>"
     lore:
+      - "{party-level-up-current}/{party-level-up-necessary}"
       - "Leader: {party-leader}"
       - "Members: {party-total-members}"
       - "Online: {party-online-members}"
@@ -14,7 +15,7 @@ items:
     skull-owner: "self"
     name: "{player-name}"
     lore:
-      - "Rank: {player-rank}"
+      - "Rank: {player-rank-chat}"
   12:
     material: AIR
   13:

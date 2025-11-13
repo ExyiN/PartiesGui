@@ -6,7 +6,7 @@ member-item:
   skull-owner: "self"
   name: "{player-name}"
   lore:
-    - "Rank: {player-rank}"
+    - "Rank: {player-rank-chat}"
     - "{player-online-status}"
 footer:
   empty: BLACK_STAINED_GLASS_PANE

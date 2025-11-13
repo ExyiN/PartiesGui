@@ -17,6 +17,11 @@ public class PGPlaceholderPartyOnlineMembers implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{party-online-members}";
+  }
+
+  @Override
   public String getReplacement() {
     final UUID partyUuid = partyPlayer.getPartyId();
     assert partyUuid != null;

@@ -15,6 +15,11 @@ public class PGPlaceholderPlayerOnlineStatus implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{player-online-status}";
+  }
+
+  @Override
   public String getReplacement() {
     final OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(partyPlayer.getPlayerUUID());
     return offlinePlayer.isOnline() ? plugin.getMessageConfigUtil().getString("player.online")

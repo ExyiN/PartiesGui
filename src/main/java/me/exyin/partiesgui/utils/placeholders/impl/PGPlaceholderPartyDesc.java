@@ -17,6 +17,11 @@ public class PGPlaceholderPartyDesc implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{party-desc}";
+  }
+
+  @Override
   public String getReplacement() {
     final UUID partyUuid = partyPlayer.getPartyId();
     assert partyUuid != null;

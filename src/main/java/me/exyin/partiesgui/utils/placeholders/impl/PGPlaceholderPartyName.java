@@ -11,6 +11,11 @@ public class PGPlaceholderPartyName implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{party-name}";
+  }
+
+  @Override
   public String getReplacement() {
     return partyPlayer.getPartyName() == null ? "" : partyPlayer.getPartyName();
   }

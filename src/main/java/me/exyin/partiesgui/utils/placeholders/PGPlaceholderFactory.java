@@ -5,29 +5,45 @@ import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.utils.placeholders.impl.*;
 import me.exyin.partiesgui.utils.placeholders.interfaces.PGPlaceholder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PGPlaceholderFactory {
+  private final PartiesGui plugin;
+  private final PartyPlayer partyPlayer;
   private final Map<String, PGPlaceholder> map;
-  private final List<String> placeholders = List.of("{party-name}", "{party-desc}", "{party-leader}", "{party-total-members}", "{party-online-members}", "{player-online-status}", "{player-name}", "{player-rank}");
+  private List<PGPlaceholder> placeholders;
 
   public PGPlaceholderFactory(final PartiesGui plugin, final PartyPlayer partyPlayer) {
+    this.plugin = plugin;
+    this.partyPlayer = partyPlayer;
     map = new HashMap<>();
-    map.put("{party-name}", new PGPlaceholderPartyName(partyPlayer));
-    map.put("{party-desc}", new PGPlaceholderPartyDesc(plugin, partyPlayer));
-    map.put("{party-leader}", new PGPlaceholderPartyLeader(plugin, partyPlayer));
-    map.put("{party-total-members}", new PGPlaceholderPartyTotalMembers(plugin, partyPlayer));
-    map.put("{party-online-members}", new PGPlaceholderPartyOnlineMembers(plugin, partyPlayer));
-    map.put("{player-online-status}", new PGPlaceholderPlayerOnlineStatus(plugin, partyPlayer));
-    map.put("{player-name}", new PGPlaceholderPlayerName(partyPlayer));
-    map.put("{player-rank}", new PGPlaceholderPlayerRank(plugin, partyPlayer));
-    map.put("default", new PGPlaceholderDefault());
+    getPlaceholders();
+    placeholders.forEach(pgPlaceholder -> map.put(pgPlaceholder.getPlaceholderName(), pgPlaceholder));
+  }
+
+  private void getPlaceholders() {
+    placeholders = new ArrayList<>();
+    placeholders.add(new PGPlaceholderPartyDesc(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyLeader(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyLevel(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyLevelUpCurrent(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyLevelUpNecessary(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyName(partyPlayer));
+    placeholders.add(new PGPlaceholderPartyNameColored(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyOnlineMembers(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyTotalMembers(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPlayerName(partyPlayer));
+    placeholders.add(new PGPlaceholderPlayerOnlineStatus(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPlayerRank(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPlayerRankChat(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderDefault());
   }
 
   public PGPlaceholder of(final String placeholder) {
-    if (!placeholders.contains(placeholder)) {
+    if (!placeholders.stream().map(PGPlaceholder::getPlaceholderName).toList().contains(placeholder)) {
       return map.get("default");
     }
     return map.get(placeholder);

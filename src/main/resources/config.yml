@@ -16,8 +16,3 @@ click-sound:
   volume: 1.0
   pitch: 1.0
   category: PLAYER
-colors:
-  ranks:
-    5: "<white>"
-    10: "<gold>"
-    20: "<red>"

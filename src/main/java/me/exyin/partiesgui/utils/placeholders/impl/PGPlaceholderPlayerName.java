@@ -11,6 +11,11 @@ public class PGPlaceholderPlayerName implements PGPlaceholder {
   }
 
   @Override
+  public String getPlaceholderName() {
+    return "{player-name}";
+  }
+
+  @Override
   public String getReplacement() {
     return partyPlayer.getName();
   }
