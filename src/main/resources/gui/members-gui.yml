@@ -6,20 +6,20 @@ member-item:
   skull-owner: "self"
   name: "{player-name}"
   lore:
-    - "Rank: {player-rank-chat}"
+    - "<dark_gray>◇</dark_gray> {player-rank-chat}"
     - "{player-online-status}"
 footer:
   empty: BLACK_STAINED_GLASS_PANE
   items:
     0:
-      click-event: "gui_previous_page"
+      click-event: 'gui_previous_page'
       material: ARROW
-      name: "Previous page"
-    8:
-      click-event: "gui_next_page"
-      material: ARROW
-      name: "Next page"
+      name: '⮨ Previous page'
     4:
-      click-event: "gui_back"
+      click-event: 'gui_next_page'
+      material: ARROW
+      name: '⮩ Next page'
+    8:
+      click-event: 'gui_back'
       material: DARK_OAK_DOOR
-      name: "Back"
+      name: '⮬ Back'
