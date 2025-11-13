@@ -4,6 +4,7 @@ import me.exyin.partiesgui.PartiesGui;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 import java.util.Objects;
 
@@ -18,10 +19,18 @@ public class MessageUtil {
 
   public void sendMessage(final Audience audience, final String key) {
     final String message = plugin.getMessageConfigUtil().getString(key);
-    audience.sendMessage(miniMessage.deserialize(plugin.getMessageConfigUtil().getString("prefix") + message));
+    audience.sendMessage(toMiniMessageComponent(plugin.getMessageConfigUtil().getString("prefix") + message));
+  }
+
+  private String convertLegacy(String text) {
+    Component legacy = LegacyComponentSerializer.legacyAmpersand().deserialize(Objects.requireNonNullElse(text, ""));
+    text = miniMessage.serialize(legacy).replace("\\", "");
+    legacy = LegacyComponentSerializer.legacySection().deserialize(text);
+    return miniMessage.serialize(legacy).replace("\\", "");
   }
 
   public Component toMiniMessageComponent(final String text) {
-    return miniMessage.deserialize(Objects.requireNonNullElse(text, ""));
+    final String transformedText = convertLegacy(text);
+    return miniMessage.deserialize(transformedText);
   }
 }
