@@ -29,7 +29,9 @@ public class PGPlaceholderPartyNameColored implements PGPlaceholder {
     final Party party = plugin.getPartiesAPI().getParty(partyUuid);
     assert party != null;
     final PartyColor partyColor = party.getColor();
-    assert partyColor != null;
+    if (partyColor == null) {
+      return partyPlayer.getPartyName();
+    }
     return partyColor.getCode() + partyPlayer.getPartyName();
   }
 }
