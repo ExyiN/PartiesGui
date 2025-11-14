@@ -13,13 +13,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MainGui implements InventoryHolder, PGGui {
-  private final String id = "main-gui";
+public class SettingsGui implements InventoryHolder, PGGui {
+  private final String id = "settings-gui";
   private final PartiesGui plugin;
   private final PartyPlayer partyPlayer;
   private final Inventory inventory;
 
-  public MainGui(final PartiesGui plugin, final PartyPlayer partyPlayer) {
+  public SettingsGui(final PartiesGui plugin, final PartyPlayer partyPlayer) {
     final int slots = 9 * plugin.getGuiUtil().getInt(id, "rows");
     this.plugin = plugin;
     this.partyPlayer = partyPlayer;
@@ -30,6 +30,7 @@ public class MainGui implements InventoryHolder, PGGui {
     setup();
   }
 
+  @Override
   public void setup() {
     final ItemStack emptySlot = plugin.getItemUtil().createItemStack(
             plugin.getGuiUtil().getString(id, "empty"),
@@ -65,6 +66,7 @@ public class MainGui implements InventoryHolder, PGGui {
   public @NotNull Inventory getInventory() {
     return inventory;
   }
+
 
   @Override
   public void handleClickEvent(final int slot, final Player whoClicked) {

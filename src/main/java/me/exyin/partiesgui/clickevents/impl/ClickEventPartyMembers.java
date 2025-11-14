@@ -7,6 +7,8 @@ import me.exyin.partiesgui.gui.MembersGui;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class ClickEventPartyMembers implements ClickEvent {
   private final PartiesGui plugin;
 
@@ -24,5 +26,10 @@ public class ClickEventPartyMembers implements ClickEvent {
     plugin.getSoundUtil().playClickSound(whoClicked);
     final MembersGui membersGui = new MembersGui(plugin, partyPlayer);
     whoClicked.openInventory(membersGui.getInventory());
+  }
+
+  @Override
+  public void processInput(final UUID uuid, final String input) {
+
   }
 }

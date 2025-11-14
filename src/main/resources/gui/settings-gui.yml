@@ -1,0 +1,44 @@
+title: "Settings"
+rows: 3
+empty: BLACK_STAINED_GLASS_PANE
+items:
+  10:
+    click-event: "party_change_name"
+    material: NAME_TAG
+    name: "{party-name}"
+    lore:
+      - "<gray>Change party name</gray>"
+  11:
+    click-event: "party_change_tag"
+    material: NAME_TAG
+    name: "{party-tag}"
+    lore:
+      - "<gray>Change party tag</gray>"
+  12:
+    click-event: "party_change_desc"
+    material: PAPER
+    name: "{party-desc}"
+    lore:
+      - "<gray>Change party description</gray>"
+  13:
+    click-event: "party_change_motd"
+    material: BELL
+    name: "{party-motd}"
+    lore:
+      - "<gray>Change party motd</gray>"
+  14:
+    click-event: "party_change_color"
+    material: RED_DYE
+    name: "{party-name-colored}"
+    lore:
+      - "<gray>Change party color</gray>"
+  16:
+    click-event: "party_change_home"
+    material: ENDER_EYE
+    name: "Party home"
+    lore:
+      - "<gray>Change party home</gray>"
+  22:
+    click-event: 'gui_back'
+    material: DARK_OAK_DOOR
+    name: '⮬ Back'

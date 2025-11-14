@@ -7,6 +7,8 @@ import me.exyin.partiesgui.gui.MembersGui;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class ClickEventGuiPreviousPage implements ClickEvent {
   private final PartiesGui plugin;
 
@@ -27,5 +29,10 @@ public class ClickEventGuiPreviousPage implements ClickEvent {
     plugin.getSoundUtil().playClickSound(whoClicked);
     membersGui.setPIndex(membersGui.getPIndex() - 1);
     membersGui.setup();
+  }
+
+  @Override
+  public void processInput(final UUID uuid, final String input) {
+
   }
 }

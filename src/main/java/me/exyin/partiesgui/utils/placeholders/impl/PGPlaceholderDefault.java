@@ -10,6 +10,6 @@ public class PGPlaceholderDefault implements PGPlaceholder {
 
   @Override
   public String getReplacement() {
-    return "";
+    return null;
   }
 }

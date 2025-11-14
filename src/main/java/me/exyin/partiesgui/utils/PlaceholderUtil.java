@@ -26,7 +26,7 @@ public class PlaceholderUtil {
     while (matcher.find()) {
       final String placeholder = matcher.group(1);
       replacement = placeholderFactory.of(placeholder).getReplacement();
-      if (!replacement.isBlank()) {
+      if (replacement != null) {
         replacedText = replacedText.replace(placeholder, replacement);
       }
     }

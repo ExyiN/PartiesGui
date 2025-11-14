@@ -33,4 +33,8 @@ public class MessageUtil {
     final String transformedText = convertLegacy(text);
     return miniMessage.deserialize(transformedText);
   }
+
+  public String serialize(final Component component) {
+    return miniMessage.serialize(component).replace("\\", "");
+  }
 }

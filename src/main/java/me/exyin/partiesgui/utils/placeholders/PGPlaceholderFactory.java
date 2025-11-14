@@ -34,6 +34,7 @@ public class PGPlaceholderFactory {
     placeholders.add(new PGPlaceholderPartyName(partyPlayer));
     placeholders.add(new PGPlaceholderPartyNameColored(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyOnlineMembers(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyTag(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyTotalMembers(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPlayerName(partyPlayer));
     placeholders.add(new PGPlaceholderPlayerOnlineStatus(plugin, partyPlayer));

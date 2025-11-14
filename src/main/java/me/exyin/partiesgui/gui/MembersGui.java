@@ -43,6 +43,7 @@ public class MembersGui implements InventoryHolder, PGGui {
     setup();
   }
 
+  @Override
   public void setup() {
     final ItemStack emptySlot = plugin.getItemUtil().createItemStack(
             plugin.getGuiUtil().getString(id, "empty"),

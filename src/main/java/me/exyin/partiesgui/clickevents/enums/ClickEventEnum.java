@@ -1,6 +1,9 @@
 package me.exyin.partiesgui.clickevents.enums;
 
 public enum ClickEventEnum {
+  PARTY_CHANGE_DESC,
+  PARTY_CHANGE_NAME,
+  PARTY_CHANGE_TAG,
   PARTY_HOME,
   PARTY_MEMBERS,
   PARTY_SETTINGS,

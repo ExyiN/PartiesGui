@@ -6,6 +6,7 @@ import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import lombok.Getter;
 import me.exyin.partiesgui.commands.PartiesGuiAdminCommands;
 import me.exyin.partiesgui.commands.PartiesGuiCommands;
+import me.exyin.partiesgui.listeners.ChatListener;
 import me.exyin.partiesgui.listeners.InventoryListener;
 import me.exyin.partiesgui.utils.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public final class PartiesGui extends JavaPlugin {
   private PlaceholderUtil placeholderUtil;
   private ItemUtil itemUtil;
   private SoundUtil soundUtil;
+  private ChatInputUtil chatInputUtil;
 
   @Override
   public void onEnable() {
@@ -34,6 +36,7 @@ public final class PartiesGui extends JavaPlugin {
     placeholderUtil = new PlaceholderUtil(this);
     itemUtil = new ItemUtil(this);
     soundUtil = new SoundUtil(this);
+    chatInputUtil = new ChatInputUtil();
     registerCommands();
     registerListeners();
   }
@@ -55,5 +58,6 @@ public final class PartiesGui extends JavaPlugin {
 
   private void registerListeners() {
     getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+    getServer().getPluginManager().registerEvents(new ChatListener(this), this);
   }
 }

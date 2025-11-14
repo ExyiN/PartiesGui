@@ -7,6 +7,7 @@ import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
 import java.text.MessageFormat;
+import java.util.UUID;
 
 public class ClickEventPartyHome implements ClickEvent {
   private final PartiesGui plugin;
@@ -23,9 +24,14 @@ public class ClickEventPartyHome implements ClickEvent {
   @Override
   public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     final String partyCommand = plugin.getConfigUtil().getString("parties-commands.party", "party");
-    final String homeSubCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.home", "home");
+    final String subCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.home", "home");
     plugin.getSoundUtil().playClickSound(whoClicked);
-    whoClicked.performCommand(MessageFormat.format("{0} {1}", partyCommand, homeSubCommand));
+    whoClicked.performCommand(MessageFormat.format("{0} {1}", partyCommand, subCommand));
     whoClicked.closeInventory();
+  }
+
+  @Override
+  public void processInput(final UUID uuid, final String input) {
+
   }
 }

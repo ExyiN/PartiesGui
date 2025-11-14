@@ -6,6 +6,8 @@ import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class ClickEventGuiClose implements ClickEvent {
   private final PartiesGui plugin;
 
@@ -22,5 +24,10 @@ public class ClickEventGuiClose implements ClickEvent {
   public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
     plugin.getSoundUtil().playClickSound(whoClicked);
     whoClicked.closeInventory();
+  }
+
+  @Override
+  public void processInput(final UUID uuid, final String input) {
+
   }
 }
