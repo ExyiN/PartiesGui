@@ -24,9 +24,9 @@ public class ChatListener implements Listener {
     final String message = plugin.getMessageUtil().serialize(event.message());
     if (message.equals("cancel")) {
       plugin.getMessageUtil().sendMessage(event.getPlayer(), "cancelled-chat-input");
-      plugin.getChatInputUtil().removeChatInput(playerUuid);
     } else {
       plugin.getChatInputUtil().getClickEvent(playerUuid).processInput(playerUuid, message);
     }
+    plugin.getChatInputUtil().removeChatInput(playerUuid);
   }
 }

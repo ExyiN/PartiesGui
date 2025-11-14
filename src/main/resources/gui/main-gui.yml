@@ -4,7 +4,7 @@ empty: BLACK_STAINED_GLASS_PANE
 items:
   10:
     material: PAPER
-    name: "{party-name-colored}"
+    name: "{party-color-code}{party-name}"
     lore:
       - "ʟᴠʟ <green>{party-level}</green> <dark_gray>•</dark_gray> {party-level-up-current}/{party-level-up-necessary}"
       - "Leader <dark_gray>»</dark_gray> {party-leader}"

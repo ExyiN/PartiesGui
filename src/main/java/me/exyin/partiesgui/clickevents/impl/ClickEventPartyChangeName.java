@@ -31,7 +31,6 @@ public class ClickEventPartyChangeName implements ClickEvent {
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-    plugin.getChatInputUtil().removeChatInput(uuid);
     final Player player = plugin.getServer().getPlayer(uuid);
     if (player == null) {
       return;

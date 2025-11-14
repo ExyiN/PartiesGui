@@ -2,7 +2,9 @@ parties-commands: # Enter the main plugin commands if you changed it
   party: "party"
   sub-commands:
     home: "home"
+    motd: "motd"
     rename: "rename"
+    tag: "tag"
 commands:
   partygui:
     command: "partygui"

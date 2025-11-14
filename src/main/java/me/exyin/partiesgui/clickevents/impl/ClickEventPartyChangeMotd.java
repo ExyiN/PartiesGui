@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 import java.text.MessageFormat;
 import java.util.UUID;
 
-public class ClickEventPartyChangeDesc implements ClickEvent {
+public class ClickEventPartyChangeMotd implements ClickEvent {
   private final PartiesGui plugin;
 
-  public ClickEventPartyChangeDesc(final PartiesGui plugin) {
+  public ClickEventPartyChangeMotd(final PartiesGui plugin) {
     this.plugin = plugin;
   }
 
@@ -26,7 +26,7 @@ public class ClickEventPartyChangeDesc implements ClickEvent {
     plugin.getChatInputUtil().addChatInput(whoClicked.getUniqueId(), this);
     plugin.getSoundUtil().playClickSound(whoClicked);
     whoClicked.closeInventory();
-    plugin.getMessageUtil().sendMessage(whoClicked, "settings.desc");
+    plugin.getMessageUtil().sendMessage(whoClicked, "settings.motd");
   }
 
   @Override
@@ -36,7 +36,7 @@ public class ClickEventPartyChangeDesc implements ClickEvent {
       return;
     }
     final String partyCommand = plugin.getConfigUtil().getString("parties-commands.party", "party");
-    final String subCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.desc", "desc");
+    final String subCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.motd", "motd");
     plugin.getServer().getScheduler().runTask(plugin, () -> player.performCommand(MessageFormat.format("{0} {1} {2}", partyCommand, subCommand, input)));
   }
 }

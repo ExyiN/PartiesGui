@@ -15,6 +15,7 @@ public class ClickEventFactory {
     map = new HashMap<>();
     map.put(ClickEventEnum.NOTHING, new ClickEventNothing());
     map.put(ClickEventEnum.PARTY_CHANGE_DESC, new ClickEventPartyChangeDesc(plugin));
+    map.put(ClickEventEnum.PARTY_CHANGE_MOTD, new ClickEventPartyChangeMotd(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_NAME, new ClickEventPartyChangeName(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_TAG, new ClickEventPartyChangeTag(plugin));
     map.put(ClickEventEnum.PARTY_HOME, new ClickEventPartyHome(plugin));
