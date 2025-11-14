@@ -2,6 +2,7 @@ package me.exyin.partiesgui.listeners;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import me.exyin.partiesgui.PartiesGui;
+import me.exyin.partiesgui.gui.SettingsGui;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -24,6 +25,7 @@ public class ChatListener implements Listener {
     final String message = plugin.getMessageUtil().serialize(event.message());
     if (message.equals("cancel")) {
       plugin.getMessageUtil().sendMessage(event.getPlayer(), "cancelled-chat-input");
+      plugin.getServer().getScheduler().runTask(plugin, () -> event.getPlayer().openInventory(new SettingsGui(plugin, plugin.getPartiesAPI().getPartyPlayer(playerUuid)).getInventory()));
     } else {
       plugin.getChatInputUtil().getClickEvent(playerUuid).processInput(playerUuid, message);
     }

@@ -3,6 +3,7 @@ package me.exyin.partiesgui.clickevents.impl;
 import com.alessiodp.parties.api.interfaces.PartyPlayer;
 import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
+import me.exyin.partiesgui.gui.SettingsGui;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import org.bukkit.entity.Player;
 
@@ -37,6 +38,9 @@ public class ClickEventPartyChangeTag implements ClickEvent {
     }
     final String partyCommand = plugin.getConfigUtil().getString("parties-commands.party", "party");
     final String subCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.tag", "tag");
-    plugin.getServer().getScheduler().runTask(plugin, () -> player.performCommand(MessageFormat.format("{0} {1} {2}", partyCommand, subCommand, input)));
+    plugin.getServer().getScheduler().runTask(plugin, () -> {
+      player.performCommand(MessageFormat.format("{0} {1} {2}", partyCommand, subCommand, input));
+      player.openInventory(new SettingsGui(plugin, plugin.getPartiesAPI().getPartyPlayer(uuid)).getInventory());
+    });
   }
 }
