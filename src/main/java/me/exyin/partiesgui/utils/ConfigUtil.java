@@ -38,4 +38,8 @@ public class ConfigUtil {
   public double getDouble(final String key) {
     return config.getDouble(key);
   }
+
+  public int getInt(final String key) {
+    return config.getInt(key);
+  }
 }

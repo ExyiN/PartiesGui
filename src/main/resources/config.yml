@@ -20,3 +20,4 @@ click-sound:
   volume: 1.0
   pitch: 1.2
   category: PLAYER
+max-lore-line-length: 40

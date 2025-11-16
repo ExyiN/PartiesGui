@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,12 +37,22 @@ public class ItemUtil {
             .toMiniMessageComponent(plugin.getPlaceholderUtil().replacePlaceholders(partyPlayer, name)));
     final List<Component> itemLore = lore.stream().map(line -> plugin.getPlaceholderUtil().replacePlaceholders(partyPlayer, line))
             .map(line -> clearText.append(plugin.getMessageUtil().toMiniMessageComponent(line))).toList();
-    final UUID skullUuid = skullOwner == null ? null : skullOwner.equals("self")
-            ? partyPlayer.getPlayerUUID() : UUID.fromString(skullOwner);
+    final List<Component> finalLore = new ArrayList<>();
+    final int maxLineLength = plugin.getConfigUtil().getInt("max-lore-line-length");
+    itemLore.forEach(line -> {
+      final List<Component> splittedLine = ComponentWrapper.wrap(line, maxLineLength);
+      finalLore.addAll(splittedLine);
+    });
+    final UUID skullUuid;
+    if (skullOwner == null) {
+      skullUuid = null;
+    } else {
+      skullUuid = skullOwner.equals("self") ? partyPlayer.getPlayerUUID() : UUID.fromString(skullOwner);
+    }
     return getItemStack(
             itemMat,
             itemName,
-            itemLore,
+            finalLore,
             isEnchanted,
             customModelData,
             skullUuid
