@@ -5,35 +5,41 @@ items:
   11:
     click-event: "party_change_name"
     material: NAME_TAG
-    name: "Change party name"
+    name: "<red>◇</red> Name"
     lore:
+      - "<gray>Change the party name</gray>"
       - "<dark_gray>»</dark_gray> {party-name}"
   12:
     click-event: "party_change_tag"
     material: NAME_TAG
-    name: "Change party tag"
+    name: "<red>◇</red> Tag"
     lore:
+      - "<gray>Change the party tag</gray>"
       - "<dark_gray>»</dark_gray> {party-tag}"
   13:
     click-event: "party_change_desc"
     material: PAPER
-    name: "Change party description"
+    name: "<red>◇</red> Description"
     lore:
+      - "<gray>Change the party description</gray>"
       - "<dark_gray>»</dark_gray> {party-desc}"
   14:
     click-event: "party_change_motd"
     material: BELL
-    name: "Change party motd"
+    name: "<red>◇</red> MOTD"
     lore:
+      - "<gray>Change the party MOTD</gray>"
       - "<dark_gray>»</dark_gray> {party-motd}"
   15:
     click-event: "party_change_color"
     material: RED_DYE
-    name: "Change party color"
+    name: "<red>◇</red> Color"
     lore:
-      - "Current <dark_gray>»</dark_gray> {party-color-code}{party-name}"
+      - "<gray>Change the party color</gray>"
+      - "<dark_gray>»</dark_gray> {party-color-code}{party-name}"
+      - ""
       - "Next <dark_gray>»</dark_gray> {party-next-color-code}{party-name}"
   22:
     click-event: "gui_back"
     material: DARK_OAK_DOOR
-    name: "⮬ Back"
+    name: "<blue>⮬</blue> Back"

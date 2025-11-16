@@ -14,12 +14,12 @@ footer:
     0:
       click-event: "gui_previous_page"
       material: ARROW
-      name: "⮨ Previous page"
+      name: "<blue>⮨</blue> Previous page"
     4:
       click-event: "gui_next_page"
       material: ARROW
-      name: "⮩ Next page"
+      name: "<blue>⮩</blue> Next page"
     8:
       click-event: "gui_back"
       material: DARK_OAK_DOOR
-      name: "⮬ Back"
+      name: "<blue>⮬</blue> Back"

@@ -11,14 +11,12 @@ parties-commands: # Enter the main plugin commands if you changed it
 commands:
   partygui:
     command: "partygui"
-    description: "Open the party GUI"
     aliases: []
   partyguia:
     command: "partyguia"
-    description: "Admin command"
     aliases: []
 click-sound:
   sound: block.lever.click
   volume: 1.0
-  pitch: 1.0
+  pitch: 1.2
   category: PLAYER

@@ -4,18 +4,18 @@ empty: BLACK_STAINED_GLASS_PANE
 items:
   10:
     material: PAPER
-    name: "{party-color-code}{party-name}"
+    name: "<dark_gray>【</dark_gray>{party-color-code}{party-tag}<dark_gray>】</dark_gray>{party-color-code}{party-name}"
     lore:
-      - "ʟᴠʟ <green>{party-level}</green> <dark_gray>•</dark_gray> {party-level-up-current}/{party-level-up-necessary}"
-      - "Leader <dark_gray>»</dark_gray> {party-leader}"
-      - "Members <dark_gray>»</dark_gray> {party-total-members}"
-      - "Online <dark_gray>»</dark_gray> {party-online-members}"
+      - "ʟᴠʟ <green>{party-level}</green> <dark_gray>•</dark_gray> <green>{party-level-up-current}</green><gray> /{party-level-up-necessary}</gray>"
+      - "<red>Leader</red> <dark_gray>»</dark_gray> {party-leader}"
+      - "<blue>Members</blue> <dark_gray>»</dark_gray> {party-total-members}"
+      - "<green>●</green> Online <dark_gray>»</dark_gray> {party-online-members}"
   11:
     material: PLAYER_HEAD
     skull-owner: "self"
-    name: "{player-name}"
+    name: "<gold>◇</gold> {player-name}"
     lore:
-      - "Rank <dark_gray>»</dark_gray> {player-rank-chat}"
+      - "<dark_gray>»</dark_gray> {player-rank-chat}"
   12:
     material: AIR
   13:
@@ -24,22 +24,22 @@ items:
     click-event: "party_settings"
     required-rank-level: 10
     material: COMMAND_BLOCK
-    name: "Party settings"
+    name: "<red>◇</red> Settings"
     lore:
       - "<gray>Modify party settings</gray>"
   15:
     click-event: "party_members"
     material: PLAYER_HEAD
-    name: "Members"
+    name: "<blue>◇</blue> Members"
     lore:
-      - "<gray>Click to see the party members</gray>"
+      - "<gray>List of members</gray>"
   16:
     click-event: "party_home"
     material: ENDER_PEARL
-    name: "Party home"
+    name: "<dark_green>◇</dark_green> Home"
     lore:
       - "<gray>Teleport to party home</gray>"
   22:
     click-event: "gui_close"
     material: BARRIER
-    name: "🗙 Close"
+    name: "<red>🗙</red> Close"

@@ -1,9 +1,9 @@
 prefix: "<gradient:#8107e9:#DE125C>PartiesGUI</gradient> <dark_gray>»</dark_gray> "
 settings:
-  desc: "<yellow>Enter the new party description in the chat... Enter 'cancel' to exit.</yellow>"
-  motd: "<yellow>Enter the new party motd in the chat... Enter 'cancel' to exit.</yellow>"
-  rename: "<yellow>Enter the new party name in the chat... Enter 'cancel' to exit.</yellow>"
-  tag: "<yellow>Enter the new party tag in the chat... Enter 'cancel' to exit.</yellow>"
+  desc: "<yellow>Enter the new party description in the chat...<newline>Enter 'remove' to delete.<newline>Enter 'cancel' to exit.</yellow>"
+  motd: "<yellow>Enter the new party motd in the chat...<newline>Enter 'remove' to delete.<newline>Enter 'cancel' to exit.</yellow>"
+  rename: "<yellow>Enter the new party name in the chat...<newline>Enter 'cancel' to exit.</yellow>"
+  tag: "<yellow>Enter the new party tag in the chat...<newline>Enter 'remove' to delete.<newline>Enter 'cancel' to exit.</yellow>"
 cancelled-chat-input: "<red>Chat input cancelled.</red>"
 player:
   online: "<green>●</green> Online"
