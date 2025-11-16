@@ -38,9 +38,7 @@ public class ClickEventPartyChangeName implements ClickEvent {
     }
     final String partyCommand = plugin.getConfigUtil().getString("parties-commands.party", "party");
     final String subCommand = plugin.getConfigUtil().getString("parties-commands.sub-commands.rename", "rename");
-    plugin.getServer().getScheduler().runTask(plugin, () -> {
-      player.performCommand(MessageFormat.format("{0} {1} {2}", partyCommand, subCommand, input));
-      player.openInventory(new SettingsGui(plugin, plugin.getPartiesAPI().getPartyPlayer(uuid)).getInventory());
-    });
+    plugin.getServer().getScheduler().runTask(plugin, () -> player.performCommand(MessageFormat.format("{0} {1} {2}", partyCommand, subCommand, input)));
+    plugin.getServer().getScheduler().runTaskLater(plugin, () -> player.openInventory(new SettingsGui(plugin, plugin.getPartiesAPI().getPartyPlayer(uuid)).getInventory()), 5L);
   }
 }
