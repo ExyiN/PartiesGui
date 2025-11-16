@@ -14,6 +14,7 @@ public class ClickEventFactory {
   public ClickEventFactory(final PartiesGui plugin) {
     map = new HashMap<>();
     map.put(ClickEventEnum.NOTHING, new ClickEventNothing());
+    map.put(ClickEventEnum.PARTY_CHANGE_COLOR, new ClickEventPartyChangeColor(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_DESC, new ClickEventPartyChangeDesc(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_MOTD, new ClickEventPartyChangeMotd(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_NAME, new ClickEventPartyChangeName(plugin));

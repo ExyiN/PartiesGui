@@ -1,10 +1,13 @@
 parties-commands: # Enter the main plugin commands if you changed it
   party: "party"
   sub-commands:
+    color: "color"
     home: "home"
     motd: "motd"
     rename: "rename"
     tag: "tag"
+  misc-commands:
+    remove: "remove"
 commands:
   partygui:
     command: "partygui"

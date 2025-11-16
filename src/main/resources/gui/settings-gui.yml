@@ -31,8 +31,8 @@ items:
     material: RED_DYE
     name: "Change party color"
     lore:
-      - "<dark_gray>»</dark_gray> {party-color-code}{party-name}"
-      - "<dark_gray>»</dark_gray> {party-color-code}{party-tag}"
+      - "Current <dark_gray>»</dark_gray> {party-color-code}{party-name}"
+      - "Next <dark_gray>»</dark_gray> {party-next-color-code}{party-name}"
   22:
     click-event: "gui_back"
     material: DARK_OAK_DOOR
