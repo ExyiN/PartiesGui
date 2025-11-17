@@ -16,10 +16,10 @@ footer:
       material: ARROW
       name: "<blue>⮨</blue> Previous page"
     4:
-      click-event: "gui_next_page"
-      material: ARROW
-      name: "<blue>⮩</blue> Next page"
-    8:
       click-event: "gui_back"
       material: DARK_OAK_DOOR
       name: "<blue>⮬</blue> Back"
+    8:
+      click-event: "gui_next_page"
+      material: ARROW
+      name: "<blue>⮩</blue> Next page"
