@@ -28,6 +28,6 @@ public class ClickEventGuiClose implements ClickEvent {
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-
+    // Nothing
   }
 }

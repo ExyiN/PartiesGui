@@ -30,6 +30,6 @@ public class ClickEventPartySettings implements ClickEvent {
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-
+    // Nothing
   }
 }

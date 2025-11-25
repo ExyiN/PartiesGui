@@ -17,16 +17,21 @@ items:
     lore:
       - "<dark_gray>»</dark_gray> {player-rank-chat}"
   12:
-    material: AIR
-  13:
-    material: AIR
-  14:
     click-event: "party_settings"
-    required-rank-level: 10
+    required-rank-level: 20
     material: COMMAND_BLOCK
     name: "<red>◇</red> Settings"
     lore:
       - "<gray>Modify party settings</gray>"
+  13:
+    material: AIR
+  14:
+    click-event: "party_invitations"
+    required-rank-level: 10
+    material: PAPER
+    name: "<green>◇</green> Invite a player"
+    lore:
+      - "<gray>Invite a player to the party</gray>"
   15:
     click-event: "party_members"
     material: PLAYER_HEAD

@@ -3,6 +3,7 @@ parties-commands: # Enter the main plugin commands if you changed it
   sub-commands:
     color: "color"
     home: "home"
+    invite: "invite"
     motd: "motd"
     rename: "rename"
     tag: "tag"

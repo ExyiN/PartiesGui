@@ -15,11 +15,11 @@ public class ClickEventNothing implements ClickEvent {
 
   @Override
   public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
-    // Do nothing
+    // Nothing
   }
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-
+    // Nothing
   }
 }

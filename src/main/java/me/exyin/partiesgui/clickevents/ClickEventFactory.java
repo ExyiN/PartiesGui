@@ -20,6 +20,8 @@ public class ClickEventFactory {
     map.put(ClickEventEnum.PARTY_CHANGE_NAME, new ClickEventPartyChangeName(plugin));
     map.put(ClickEventEnum.PARTY_CHANGE_TAG, new ClickEventPartyChangeTag(plugin));
     map.put(ClickEventEnum.PARTY_HOME, new ClickEventPartyHome(plugin));
+    map.put(ClickEventEnum.PARTY_INVITATIONS, new ClickEventPartyInvitations(plugin));
+    map.put(ClickEventEnum.PARTY_INVITE, new ClickEventPartyInvite(plugin));
     map.put(ClickEventEnum.PARTY_MEMBERS, new ClickEventPartyMembers(plugin));
     map.put(ClickEventEnum.PARTY_SETTINGS, new ClickEventPartySettings(plugin));
     map.put(ClickEventEnum.GUI_PREVIOUS_PAGE, new ClickEventGuiPreviousPage(plugin));
