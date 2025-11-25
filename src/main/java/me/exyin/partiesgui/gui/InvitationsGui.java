@@ -11,7 +11,6 @@ import me.exyin.partiesgui.clickevents.enums.ClickEventEnum;
 import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
 import me.exyin.partiesgui.gui.interfaces.PageableGui;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -21,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MembersGui implements InventoryHolder, PGGui, PageableGui {
-  private final String id = "members-gui";
+public class InvitationsGui implements InventoryHolder, PGGui, PageableGui {
+  private final String id = "invitations-gui";
   private final PartiesGui plugin;
   private final PartyPlayer partyPlayer;
   private final Inventory inventory;
@@ -32,7 +31,7 @@ public class MembersGui implements InventoryHolder, PGGui, PageableGui {
   @Setter
   private int pIndex;
 
-  public MembersGui(final PartiesGui plugin, final PartyPlayer partyPlayer) {
+  public InvitationsGui(final PartiesGui plugin, final PartyPlayer partyPlayer) {
     final int slots = 9 * plugin.getGuiUtil().getInt(id, "rows");
     this.plugin = plugin;
     this.partyPlayer = partyPlayer;
@@ -41,6 +40,7 @@ public class MembersGui implements InventoryHolder, PGGui, PageableGui {
             plugin.getMessageUtil().toMiniMessageComponent(
                     plugin.getPlaceholderUtil().replacePlaceholders(partyPlayer, plugin.getGuiUtil().getString(id, "title"))));
     pIndex = 0;
+    pages = new ArrayList<>();
     setup();
   }
 
@@ -65,19 +65,27 @@ public class MembersGui implements InventoryHolder, PGGui, PageableGui {
 
   @Override
   public void setupContent() {
-    final List<PartyPlayer> members = getMembers();
-    pages = Lists.partition(members, inventory.getSize() - 9);
+    final Set<UUID> members = getMembers();
+    List<PartyPlayer> onlinePlayers = plugin.getServer().getOnlinePlayers().stream().map(player -> plugin.getPartiesAPI().getPartyPlayer(player.getUniqueId())).toList();
+    onlinePlayers = onlinePlayers.stream().filter(pp -> !members.contains(pp.getPlayerUUID()) && !pp.isInParty()).toList();
+    final List<PartyPlayer> players = new ArrayList<>(onlinePlayers);
+    if (players.isEmpty()) {
+      return;
+    }
+    final Comparator<PartyPlayer> comparator = Comparator.comparing(PartyPlayer::getName);
+    players.sort(comparator);
+    pages = Lists.partition(players, inventory.getSize() - 9);
     final List<PartyPlayer> selectedPage = pages.get(pIndex);
     final AtomicInteger slot = new AtomicInteger();
-    selectedPage.forEach(member -> {
+    selectedPage.forEach(player -> {
       final ItemStack item = plugin.getItemUtil().createItemStack(
-              plugin.getGuiUtil().getString(id, "member-item.material"),
-              plugin.getGuiUtil().getString(id, "member-item.name"),
-              plugin.getGuiUtil().getStringList(id, "member-item.lore"),
-              plugin.getGuiUtil().getBoolean(id, "member-item.enchanted"),
-              plugin.getGuiUtil().getString(id, "member-item.custom-model-data"),
-              plugin.getGuiUtil().getString(id, "member-item.skull-owner"),
-              member
+              plugin.getGuiUtil().getString(id, "invite-item.material"),
+              plugin.getGuiUtil().getString(id, "invite-item.name"),
+              plugin.getGuiUtil().getStringList(id, "invite-item.lore"),
+              plugin.getGuiUtil().getBoolean(id, "invite-item.enchanted"),
+              plugin.getGuiUtil().getString(id, "invite-item.custom-model-data"),
+              plugin.getGuiUtil().getString(id, "invite-item.skull-owner"),
+              player
       );
       inventory.setItem(slot.get(), item);
       slot.getAndIncrement();
@@ -124,42 +132,25 @@ public class MembersGui implements InventoryHolder, PGGui, PageableGui {
     }
   }
 
-  private List<PartyPlayer> getMembers() {
+  private Set<UUID> getMembers() {
     final UUID partyId = partyPlayer.getPartyId();
     if (partyId != null) {
       final Party party = plugin.getPartiesAPI().getParty(partyId);
       if (party != null) {
-        final Set<UUID> membersUuid = party.getMembers();
-        final List<PartyPlayer> members = new ArrayList<>();
-        for (final UUID memberUuid : membersUuid) {
-          final PartyPlayer member = plugin.getPartiesAPI().getPartyPlayer(memberUuid);
-          members.add(member);
-        }
-        final Comparator<PartyPlayer> comparator = Comparator.comparing((final PartyPlayer pp) -> {
-                  final OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(pp.getPlayerUUID());
-                  return offlinePlayer.isOnline();
-                })
-                .thenComparingInt(PartyPlayer::getRank)
-                .reversed()
-                .thenComparing(pp -> pp.getName().toLowerCase());
-        members.sort(comparator);
-        return members;
+        return party.getMembers();
       }
     }
-    return List.of();
-  }
-
-  @Override
-  public @NotNull Inventory getInventory() {
-    return inventory;
+    return Set.of();
   }
 
   @Override
   public void handleClickEvent(final int slot, final Player whoClicked) {
+    final String key;
     if (slot < inventory.getSize() - 9) {
-      return;
+      key = "invite-item.click-event";
+    } else {
+      key = "footer.items." + (slot - inventory.getSize() + 9) + ".click-event";
     }
-    final String key = "footer.items." + (slot - inventory.getSize() + 9) + ".click-event";
     final String clickEventName = plugin.getGuiUtil().getString(id, key);
     if (clickEventName == null) {
       return;
@@ -169,5 +160,10 @@ public class MembersGui implements InventoryHolder, PGGui, PageableGui {
     if (clickEvent.canExecute(this, whoClicked, partyPlayer, slot)) {
       clickEvent.execute(this, whoClicked, partyPlayer, slot);
     }
+  }
+
+  @Override
+  public @NotNull Inventory getInventory() {
+    return inventory;
   }
 }

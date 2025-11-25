@@ -60,6 +60,6 @@ public class ClickEventPartyChangeColor implements ClickEvent {
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-
+    // Nothing
   }
 }

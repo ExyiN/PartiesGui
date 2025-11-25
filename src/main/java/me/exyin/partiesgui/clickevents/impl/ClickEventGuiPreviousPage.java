@@ -5,6 +5,7 @@ import me.exyin.partiesgui.PartiesGui;
 import me.exyin.partiesgui.clickevents.interfaces.ClickEvent;
 import me.exyin.partiesgui.gui.MembersGui;
 import me.exyin.partiesgui.gui.interfaces.PGGui;
+import me.exyin.partiesgui.gui.interfaces.PageableGui;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -23,16 +24,16 @@ public class ClickEventGuiPreviousPage implements ClickEvent {
 
   @Override
   public void execute(final PGGui gui, final Player whoClicked, final PartyPlayer partyPlayer, final int slot) {
-    if (!(gui instanceof final MembersGui membersGui)) {
+    if (!(gui instanceof final PageableGui pageableGui)) {
       return;
     }
     plugin.getSoundUtil().playClickSound(whoClicked);
-    membersGui.setPIndex(membersGui.getPIndex() - 1);
-    membersGui.setup();
+    pageableGui.setPIndex(pageableGui.getPIndex() - 1);
+    gui.setup();
   }
 
   @Override
   public void processInput(final UUID uuid, final String input) {
-
+    // Nothing
   }
 }
