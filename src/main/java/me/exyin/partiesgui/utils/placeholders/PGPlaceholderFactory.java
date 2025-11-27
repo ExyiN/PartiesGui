@@ -30,6 +30,7 @@ public class PGPlaceholderFactory {
     placeholders.add(new PGPlaceholderPartyDesc(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyLeader(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyLevel(plugin, partyPlayer));
+    placeholders.add(new PGPlaceholderPartyLevelExp(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyLevelUpCurrent(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyLevelUpNecessary(plugin, partyPlayer));
     placeholders.add(new PGPlaceholderPartyMotd(plugin, partyPlayer));

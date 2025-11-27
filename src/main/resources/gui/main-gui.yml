@@ -6,7 +6,7 @@ items:
     material: PAPER
     name: "<dark_gray>【</dark_gray>{party-color-code}{party-tag}<dark_gray>】</dark_gray>{party-color-code}{party-name}"
     lore:
-      - "ʟᴠʟ <green>{party-level}</green> <dark_gray>•</dark_gray> <green>{party-level-up-current}</green><gray> /{party-level-up-necessary}</gray>"
+      - "ʟᴠʟ <green>{party-level}</green> <dark_gray>•</dark_gray> <green>{party-level-up-current}</green><gray> /{party-level-exp}</gray>"
       - "<red>Leader</red> <dark_gray>»</dark_gray> {party-leader}"
       - "<blue>Members</blue> <dark_gray>»</dark_gray> {party-total-members}"
       - "<green>●</green> Online <dark_gray>»</dark_gray> {party-online-members}"
