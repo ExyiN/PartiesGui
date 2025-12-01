@@ -27,6 +27,6 @@ public class PGPlaceholderPartyLevelExp implements PGPlaceholder {
     assert partyUuid != null;
     final Party party = plugin.getPartiesAPI().getParty(partyUuid);
     assert party != null;
-    return String.valueOf(party.getLevelExperience());
+    return String.format(plugin.getConfigUtil().getString("decimal-format", "%.2f"), party.getLevelExperience());
   }
 }

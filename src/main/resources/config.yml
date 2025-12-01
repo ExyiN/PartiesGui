@@ -22,3 +22,4 @@ click-sound:
   pitch: 1.2
   category: PLAYER
 max-lore-line-length: 40
+decimal-format: "%.2f"
